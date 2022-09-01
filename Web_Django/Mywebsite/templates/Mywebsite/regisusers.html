@@ -1,0 +1,46 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+<h1>ลงทะเบียนผู้ใช้งาน</h1>
+
+<form action="{% url 'regis_usersdata' %}" method="post">
+    {% csrf_token %}
+    <div class='form-group'>
+        <label for="">Username</label>
+        <input type="text" class="form-control" name="user" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Re-Password</label>
+        <input type="password" class="form-control" name="re-password" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Name</label>
+        <input type="text" class="form-control" name="fname" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Lastname</label>
+        <input type="text" class="form-control" name="lname" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Email</label>
+        <input type="email" class="form-control" name="email" required>
+    </div>
+
+    {% for msg in messages %}
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Error!</h4>
+        <p>
+            {{msg}}
+        </p>
+    </div>
+    {% endfor %}
+    <br>
+    <input type="submit" value="บันทึก" class="btn btn-success">
+</form>
+
+{% endblock %}

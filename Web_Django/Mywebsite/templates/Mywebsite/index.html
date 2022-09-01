@@ -1,0 +1,19 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+{% for data in news %}
+<form action="{% url 'contentshow' %}" method="get">
+    <div class="card mb-3">
+        <input type="hidden" value="{{data.id}}" name="id">
+        <img class="card-img-top" src="{{ data.news_photo.url }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{data.news_title}}</h5>
+          <p class="card-text">{{data.news_date}}</p>
+          <input type="submit" value="อ่านต่อ" class="btn btn-success">
+        </div>
+    </div>
+</form>
+<br>
+{% endfor %}
+{% endblock %}

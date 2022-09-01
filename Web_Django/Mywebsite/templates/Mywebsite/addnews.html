@@ -1,0 +1,26 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+<h1>
+    เพิ่มข้อมูลข่าวสาร
+</h1>
+<form action="{% url 'addnewsdata' %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class='form-group'>
+        <label for="">ชื่อข่าวสาร</label>
+        <input type="text" class="form-control" name="name_news" required>
+    </div>
+    <div class='form-group'>
+        <label for="">รายละเอียดข่าวสาร</label>
+        <textarea type="text" class="form-control" name="news_detail" required ></textarea>
+    </div>
+    <div>
+        <input type='file' name='name_newfile' acept="image/x-png,image/gif,image/jepg" required>
+        <img id="blah" src="#" alt="" class="img-thumbail" />
+    </div>
+    <br>
+    <input type="submit" value="บันทึก" class="btn btn-success">
+</form>
+
+{% endblock %}

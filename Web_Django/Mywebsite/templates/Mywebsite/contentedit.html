@@ -1,0 +1,28 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+<h1>
+    แก้ไขข้อมูล
+</h1>
+{% for data in result %}
+<form action="{% url 'contentupdate' %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{data.id}}" name="id">
+    <div class='form-group'>
+        <label for="">ชื่อข่าวสาร</label>
+        <input type="text" class="form-control" name="name_news" value="{{data.news_title}}">
+    </div>
+    <div class='form-group'>
+        <label for="">รายละเอียดข่าวสาร</label>
+        <textarea type="text" class="form-control" name="news_detail">{{data.news_detail}}</textarea>
+    </div>
+    <div>
+        <input type ='file' name = 'name_newfile' acept ="image/x-png,image/gif,image/jepg">
+        <img id="blah" src="{{data.news_photo.url}}" alt="" class="img-thumbail" />
+    </div>
+    <br>
+    <input type="submit" value="บันทึก" class="btn btn-success">
+</form>
+{% endfor %}
+{% endblock %}

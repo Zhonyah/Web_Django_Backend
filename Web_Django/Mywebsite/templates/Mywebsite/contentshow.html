@@ -1,0 +1,38 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+<h1>แสดงข้อมูล</h1>
+{% for data in result %}
+<input type="hidden" value="{{data.id}}" name="id">
+<div class='form-group'>
+    <label for="">ชื่อข่าวสาร</label>
+    <input type="text" class="form-control" name="name_news" value="{{data.news_title}}" readonly>
+</div>
+<div>
+    <img id="blah" src="{{ data.news_photo.url }}" alt="" class="img-thumbail"/>
+</div>
+<div class='form-group'>
+    <label forn="">รายละเอียดข่าวสาร</label>
+    <textarea type="text" class="form-control" name="news_detail" rows="20" readonly>{{data.news_detail}}</textarea>
+</div>
+
+{% endfor %}
+{% endblock %}
+
+<div class="card mb-3">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    <img class="card-img-bottom" src="..." alt="Card image cap">
+  </div>

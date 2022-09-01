@@ -1,0 +1,28 @@
+{% extends 'Mywebsite/header.html' %}
+
+{% block content %}
+<br>
+<h1>เข้าสู่ระบบ</h1>
+
+<form action="{% url 'logincheck' %}" method="post">
+    {% csrf_token %}
+    <div class='form-group'>
+        <label for="">Username</label>
+        <input type="text" class="form-control" name="user" required>
+    </div>
+    <div class='form-group'>
+        <label for="">Password</label>
+        <input type="password" class="form-control" name="password" required>
+    {% for msg in messages %}
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Error!</h4>
+        <p>
+            {{msg}}
+        </p>
+    </div>
+    {% endfor %}
+    <br>
+    <input type="submit" value="เข้าสู่ระบบ" class="btn btn-success">
+</form>
+
+{% endblock %}
